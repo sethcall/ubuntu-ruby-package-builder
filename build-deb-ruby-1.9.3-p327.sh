@@ -30,7 +30,7 @@ fi
 echo "Unpacking $rubysrc"
 tar -jxf $rubysrc
 cd ruby-$rubyversion
-./configure --prefix=/usr/local --disable-install-doc --with-opt-dir=/tmp/libyaml/usr/local  --with-readline  --enable-shared && make && make install DESTDIR=$destdir
+./configure --prefix=/usr/local --disable-install-doc --with-opt-dir=/tmp/$destdir/usr/local --enable-shared && make && make install DESTDIR=$destdir
 
 cd ..
 gem list -i fpm || sudo gem install fpm
