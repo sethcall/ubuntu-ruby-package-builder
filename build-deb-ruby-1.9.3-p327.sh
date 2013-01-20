@@ -7,16 +7,7 @@ rubysrc=ruby-$rubyversion.tar.bz2
 checksum=7d602aba93f31ceef32800999855fbca
 destdir=/tmp/install-$rubyversion
 
-sudo apt-get -y install libssl-dev libreadline-dev zlib1g-dev
-
-if [ ! -f yaml-0.1.4.tar.gz ]; then
-  wget -q http://pyyaml.org/download/libyaml/yaml-0.1.4.tar.gz
-fi
-
-tar xzvf yaml-0.1.4.tar.gz
-cd yaml-0.1.4
-./configure --prefix=/usr/local && make && make install DESTDIR=$destdir
-cd ..
+sudo apt-get -y install libssl-dev libreadline-dev zlib1g-dev libyaml-dev
 
 if [ ! -f $rubysrc ]; then
   wget -q ftp://ftp.ruby-lang.org/pub/ruby/1.9/$rubysrc
@@ -30,7 +21,7 @@ fi
 echo "Unpacking $rubysrc"
 tar -jxf $rubysrc
 cd ruby-$rubyversion
-./configure --prefix=/usr/local --disable-install-doc --with-opt-dir=/tmp/$destdir/usr/local --enable-shared && make && make install DESTDIR=$destdir
+./configure --prefix=/usr/local --disable-install-doc --enable-shared && make && make install DESTDIR=$destdir
 
 cd ..
 gem list -i fpm || sudo gem install fpm
