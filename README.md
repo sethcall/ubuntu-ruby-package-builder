@@ -1,3 +1,13 @@
+Why the fork?
+=============
+Mostly I wanted a newer version of ruby, but also with --enable-shared specified as a configure flag.
+
+Major differences with the 1.9.3-p125 script are:
+* all lib*dev dependencies installed before compilation
+* use of libyaml-0-2 instead of compiling yaml from source
+* specification of --enable-shared
+* tightened up minimum dependecy versions to match an up-to-date Ubuntu 12.04 (on Jan 20, 2013)
+
 Ubuntu Ruby Package Builder
 ===========================
 
