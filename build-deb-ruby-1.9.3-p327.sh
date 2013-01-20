@@ -15,7 +15,7 @@ fi
 
 tar xzvf yaml-0.1.4.tar.gz
 cd yaml-0.1.4
-./configure --prefix=/usr && make && make install DESTDIR=$destdir
+./configure --prefix=/usr/local && make && make install DESTDIR=$destdir
 cd ..
 
 if [ ! -f $rubysrc ]; then
@@ -30,7 +30,7 @@ fi
 echo "Unpacking $rubysrc"
 tar -jxf $rubysrc
 cd ruby-$rubyversion
-./configure --prefix=/usr --disable-install-doc --with-opt-dir=/tmp/libyaml/usr  --with-readline  --enable-shared && make && make install DESTDIR=$destdir
+./configure --prefix=/usr/local --disable-install-doc --with-opt-dir=/tmp/libyaml/usr/local  --with-readline  --enable-shared && make && make install DESTDIR=$destdir
 
 cd ..
 gem list -i fpm || sudo gem install fpm
@@ -39,6 +39,6 @@ fpm -s dir -t deb -n ruby$version -v $rubyversion -C $destdir \
   -d "libc6 (>= 2.6)" -d "libffi6 (>= 3.0.10)" -d "libgdbm3 (>= 1.8.3)" \
   -d "libncurses5 (>= 5.7)" -d "libreadline6 (>= 6.1)" \
   -d "libssl1.0.0 (>= 1.0.1)" -d "zlib1g (>= 1:1.2.2)" \
-  usr/bin usr/lib usr/share/man usr/include
+  usr/local/bin usr/local/lib usr/local/share/man usr/local/include
 
 rm -r $destdir
