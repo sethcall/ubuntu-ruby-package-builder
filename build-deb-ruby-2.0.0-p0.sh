@@ -4,10 +4,10 @@ version=2.0.0
 patch=p0
 rubyversion=$version-$patch
 rubysrc=ruby-$rubyversion.tar.bz2
-checksum=50d307c4dc9297ae59952527be4e755d
+checksum=895c1c581f8d28e8b3bb02472b2ccf6a
 destdir=/tmp/install-$rubyversion
 
-sudo apt-get -y install libssl-dev libreadline-dev zlib1g-dev libyaml-dev libgdbm-dev libffi-dev libncurses5-dev libxml2-dev libxslt1-dev automake libtool gdbm-dev libc6-dev
+sudo apt-get -y install libssl-dev libreadline-dev zlib1g-dev libyaml-dev libgdbm-dev libffi-dev libncurses5-dev libxml2-dev libxslt1-dev automake libtool libc6-dev
 
 if [ ! -f $rubysrc ]; then
     wget -q ftp://ftp.ruby-lang.org/pub/ruby/2.0/$rubysrc
